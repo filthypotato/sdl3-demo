@@ -4,16 +4,6 @@ A 2D side-scrolling platformer/shooter demo built by following an SDL3 tutorial.
 
 Developed on Arch Linux and Windows using Neovim. Cross-platform fixes were added to get it running on Linux in addition to Windows.
 
-## Features
-
-- Parallax scrolling background
-- Sprite animation system
-- AABB collision detection
-- Enemy AI with damage/death states
-- Audio via SDL3_mixer (music + sound effects)
-- Debug overlay (F10)
-- Fullscreen toggle (F11)
-
 ## Controls
 
 | Key | Action |
@@ -24,39 +14,78 @@ Developed on Arch Linux and Windows using Neovim. Cross-platform fixes were adde
 | F10 | Toggle debug overlay |
 | F11 | Toggle fullscreen |
 
-## Dependencies
+---
+
+## Just Want to Play?
+
+Download the latest release from the [Releases](../../releases) page. Extract the zip and run `sdl3-demo.exe` (Windows) or `sdl3-demo` (Linux). No install required.
+
+---
+
+## Building from Source
+
+### Important: Folder Name
+
+If you download the source as a zip from GitHub, it will extract as `sdl3-demo-main`. **You must rename it to `sdl3-demo`** before building, otherwise CMake will not find the source files.
+
+If you clone with git it will already be named correctly:
+
+```bash
+git clone git@github.com:filthypotato/sdl3-demo.git
+```
+
+### Dependencies
+
+You need the following libraries installed before building:
 
 - [SDL3](https://github.com/libsdl-org/SDL)
 - [SDL3_image](https://github.com/libsdl-org/SDL_image)
 - [SDL3_mixer](https://github.com/libsdl-org/SDL_mixer)
 - [GLM](https://github.com/g-truc/glm)
 
-### Arch Linux
+#### Arch Linux
 
 ```bash
 sudo pacman -S sdl3 sdl3_image sdl3_mixer glm
 ```
 
-### Windows
+#### Windows
 
-Install dependencies via vcpkg or manually place SDL3, SDL3_image, and SDL3_mixer development libraries where CMake can find them.
+Install via [vcpkg](https://vcpkg.io/) or manually place the SDL3, SDL3_image, and SDL3_mixer development libraries somewhere CMake can find them.
 
-## Building
+### Building on Linux
 
-### Linux
+From inside the `sdl3-demo` folder:
 
 ```bash
 cmake -B build_linux -DCMAKE_BUILD_TYPE=Release
 cmake --build build_linux
-./build_linux/sdl3-demo
 ```
 
-### Windows
+### Building on Windows
+
+From inside the `sdl3-demo` folder in PowerShell:
 
 ```powershell
 .\build_win.ps1
 ```
 
-The binary will be at `build_win\Release\sdl3-demo.exe`.
+This requires CMake 3.21+ and Visual Studio 2022 with the C++ workload installed.
 
-The binary can be run from any directory — it finds its assets relative to its own location.
+---
+
+## Running
+
+### Linux
+
+```bash
+./build_linux/sdl3-demo
+```
+
+### Windows
+
+```
+build_win\Release\sdl3-demo.exe
+```
+
+The binary can be run from any directory — it finds its assets automatically.
