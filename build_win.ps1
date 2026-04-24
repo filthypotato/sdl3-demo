@@ -11,7 +11,14 @@ Set-Location $buildDir
 
 Write-Host "== Configuring =="
 
-cmake .. -G "Visual Studio 17 2022" -A x64
+# Use vcpkg toolchain if VCPKG_ROOT is set
+$toolchain = ""
+if ($env:VCPKG_ROOT) {
+    $toolchain = "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake"
+    Write-Host "Using vcpkg at $env:VCPKG_ROOT"
+}
+
+cmake .. -G "Visual Studio 17 2022" -A x64 $toolchain
 
 if ($LASTEXITCODE -ne 0) {
     Write-Error "CMake configure failed"
