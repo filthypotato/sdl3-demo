@@ -1,10 +1,16 @@
 # sdl3-demo
 
-A 2D side-scrolling platformer/shooter demo built by following an SDL3 tutorial. Not original work — shared for reference and as a starting point for others learning SDL3.
+A 2D side-scrolling platformer/shooter built in C++20 using SDL3. Work done following an SDL3 tutorial — shared for learning purposes.
 
-Developed on Arch Linux and Windows using Neovim. Cross-platform fixes were added to get it running on Linux in addition to Windows.
+Built and edited using **Neovim** on Arch Linux and Windows.
 
-## Controls
+---
+
+## Gameplay
+
+Run, jump, and shoot your way through a level full of shambling enemies. Enemies track you at close range, take damage, flash on hit, and die with a full death animation. Bullets have their own collision states and screen-edge culling. A parallax scrolling background reacts to your movement speed.
+
+**Controls**
 
 | Key | Action |
 |-----|--------|
@@ -16,76 +22,61 @@ Developed on Arch Linux and Windows using Neovim. Cross-platform fixes were adde
 
 ---
 
+## Tech
+
+- **C++20** — unions, designated initializers, lambdas
+- **SDL3** — window, renderer, input, vsync
+- **SDL3_image** — PNG texture loading
+- **SDL3_mixer** — WAV/MP3 audio with track-based looping music
+- **GLM** — 2D vectors for position, velocity, acceleration
+- Custom **animation**, **timer**, and **AABB collision** systems
+
+---
+
 ## Just Want to Play?
 
-Download the latest release from the [Releases](../../releases) page. Extract the zip and run `sdl3-demo.exe` (Windows) or `sdl3-demo` (Linux). No install required.
+Download the latest zip from the [Releases](../../releases) page, extract it, and run the binary. No install needed — everything is bundled.
 
 ---
 
 ## Building from Source
 
-### Important: Folder Name
+### Before You Start
 
-If you download the source as a zip from GitHub, it will extract as `sdl3-demo-main`. **You must rename it to `sdl3-demo`** before building, otherwise CMake will not find the source files.
-
-If you clone with git it will already be named correctly:
-
-```bash
-git clone git@github.com:filthypotato/sdl3-demo.git
-```
+> **Important:** If you downloaded the source as a zip from GitHub it will extract as `sdl3-demo-main`. You **must rename the folder to `sdl3-demo`** before building or CMake will not find the source files.
+>
+> Cloning with git avoids this entirely:
+> ```bash
+> git clone https://github.com/YOUR_USERNAME/sdl3-demo.git
+> ```
 
 ### Dependencies
 
-You need the following libraries installed before building:
-
-- [SDL3](https://github.com/libsdl-org/SDL)
-- [SDL3_image](https://github.com/libsdl-org/SDL_image)
-- [SDL3_mixer](https://github.com/libsdl-org/SDL_mixer)
-- [GLM](https://github.com/g-truc/glm)
-
-#### Arch Linux
-
-```bash
-sudo pacman -S sdl3 sdl3_image sdl3_mixer glm
-```
-
-#### Windows
-
-Install via [vcpkg](https://vcpkg.io/) or manually place the SDL3, SDL3_image, and SDL3_mixer development libraries somewhere CMake can find them.
-
-### Building on Linux
-
-From inside the `sdl3-demo` folder:
-
-```bash
-cmake -B build_linux -DCMAKE_BUILD_TYPE=Release
-cmake --build build_linux
-```
-
-### Building on Windows
-
-From inside the `sdl3-demo` folder in PowerShell:
-
-```powershell
-.\build_win.ps1
-```
-
-This requires CMake 3.21+ and Visual Studio 2022 with the C++ workload installed.
-
----
-
-## Running
+| Library | Arch Linux | Windows |
+|---------|-----------|---------|
+| SDL3 | `sudo pacman -S sdl3` | vcpkg or manual |
+| SDL3_image | `sudo pacman -S sdl3_image` | vcpkg or manual |
+| SDL3_mixer | `sudo pacman -S sdl3_mixer` | vcpkg or manual |
+| GLM | `sudo pacman -S glm` | vcpkg or manual |
 
 ### Linux
 
 ```bash
+cmake -B build_linux -DCMAKE_BUILD_TYPE=Release
+cmake --build build_linux
 ./build_linux/sdl3-demo
 ```
 
 ### Windows
 
-```
-build_win\Release\sdl3-demo.exe
+Requires Visual Studio 2022 (C++ workload) and CMake 3.21+.
+
+```powershell
+.\build_win.ps1
 ```
 
-The binary can be run from any directory — it finds its assets automatically.
+Binary will be at `build_win\Release\sdl3-demo.exe`. SDL3 DLLs are copied automatically alongside it.
+
+---
+
+The binary finds its `resources/` folder relative to itself, so it runs correctly from any directory.
