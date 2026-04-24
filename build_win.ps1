@@ -27,4 +27,15 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-Write-Host "`nBuild complete."
+Write-Host "== Packaging =="
+
+$releaseDir = "Release"
+$zipName = "..\sdl3-demo-windows.zip"
+
+if (Test-Path $zipName) {
+    Remove-Item $zipName
+}
+
+Compress-Archive -Path "$releaseDir\*" -DestinationPath $zipName
+
+Write-Host "`nBuild complete. Release zip: sdl3-demo-windows.zip"

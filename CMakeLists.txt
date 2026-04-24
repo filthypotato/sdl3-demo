@@ -29,3 +29,13 @@ add_custom_command(TARGET sdl3-demo POST_BUILD
         "${CMAKE_SOURCE_DIR}/resources"
         "$<TARGET_FILE_DIR:sdl3-demo>/resources"
 )
+
+# On Windows, copy SDL DLLs next to the executable
+if(WIN32)
+    add_custom_command(TARGET sdl3-demo POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_RUNTIME_DLLS:sdl3-demo>
+            $<TARGET_FILE_DIR:sdl3-demo>
+        COMMAND_EXPAND_LISTS
+    )
+endif()
