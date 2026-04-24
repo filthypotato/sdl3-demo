@@ -14,9 +14,9 @@ find_package(SDL3_mixer REQUIRED)
 find_package(glm REQUIRED)
 
 add_executable(sdl3-demo
-    "sdl3-demo/sdl3-demo/sdl3-demo.cpp"
-    "sdl3-demo/sdl3-demo/timer.h"
-    "sdl3-demo/sdl3-demo/animation.h"
+    "sdl3-demo/sdl3-demo.cpp"
+    "sdl3-demo/timer.h"
+    "sdl3-demo/animation.h"
 )
 
 set_property(TARGET sdl3-demo PROPERTY CXX_STANDARD 20)

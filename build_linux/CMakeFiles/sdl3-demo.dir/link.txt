@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/sdl3-demo.dir/link.d "CMakeFiles/sdl3-demo.dir/sdl3-demo/sdl3-demo.cpp.o" -o sdl3-demo  -Wl,-rpath,/usr/local/lib /usr/local/lib/libSDL3_image.so.0.3.2 /usr/local/lib/libSDL3_mixer.so.0.1.0 /usr/local/lib/libglm.a /usr/local/lib/libSDL3.so.0.5.0

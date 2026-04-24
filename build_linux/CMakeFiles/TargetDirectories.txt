@@ -1,0 +1,3 @@
+/home/filthypotato/Documents/Projects/sdl3-demo/build_linux/CMakeFiles/sdl3-demo.dir
+/home/filthypotato/Documents/Projects/sdl3-demo/build_linux/CMakeFiles/edit_cache.dir
+/home/filthypotato/Documents/Projects/sdl3-demo/build_linux/CMakeFiles/rebuild_cache.dir
