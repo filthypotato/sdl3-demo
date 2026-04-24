@@ -31,7 +31,7 @@ jobs:
           zip -r ../sdl3-demo-linux.zip sdl3-demo resources/
 
       - name: Upload to release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: sdl3-demo-linux.zip
 
@@ -53,6 +53,6 @@ jobs:
         run: Compress-Archive -Path "build_win\Release\*" -DestinationPath "sdl3-demo-windows.zip"
 
       - name: Upload to release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: sdl3-demo-windows.zip
