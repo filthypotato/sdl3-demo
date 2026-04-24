@@ -365,3 +365,6 @@ MigrationBackup/
 FodyWeavers.xsd
 /CMakeUserPresets.json
 /build-em
+
+build_linux/
+build/
